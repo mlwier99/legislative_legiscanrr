@@ -16,9 +16,8 @@ library("stringr")
 # Set Directory
 getwd()
 #setwd("/home/sean/Documents/michelle/bill_data")
-setwd("/home/michelle/sdb1/")
-setwd("/Volumes/Samsung_T5/Data/Legiscan/Data")
-setwd("/run/media/sean/mwier/")
+#setwd("/home/michelle/sdb1/")
+#setwd("/run/media/sean/mwier/")
 dir()
 list.files()
 
