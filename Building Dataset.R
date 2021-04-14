@@ -1,3 +1,5 @@
+# Actual retrieval of .json files from Legiscan API; useless without an API key. 
+
 #install.packages("devtools")
 #install.packages("rjson")
 # install.packages("dplyr")
