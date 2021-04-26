@@ -151,30 +151,3 @@ for(i in 1:length(state_list)){
   bill_master <- merge(bill_master, bill_sponsor, by.x = "bill_id", by.y = "bill_id")
   save(bill_master, file = paste0("data_r/", "MS", "/", "MS", "_bill_master.RData"))
 }
-
-############### Code to Convert to Text ############### 
-
-#filename_txt = paste0("data_txt/", text_list[i], "/", text_list[i],"_bill_text.txt")
-#write.table(bill_text_all, file = #filename_txt, 
-  #sep="", append=F, col.names=T, row.names=F, quote=T)
-#filename_r = paste0("data_r/", state_list[i], "/", state_list[i], "_bill_meta.RData")
-#save(bill_meta, file = filename_r)
-#filename_txt = paste0("data_txt/", state_list[i], "/", state_list[i], "_bill_meta.txt")
-#write.table(bill_meta, file = #filename_txt, 
-# sep="\t", append=F, col.names=T, row.names=F, quote=T)
-##filename_txt = paste0("data_txt/", state_list[i], "/", state_list[i], "_bill_people_votes.txt")
-##write.table(bill_people_vote, file = #filename_txt, 
-#sep="\t", append=F, col.names=T, row.names=F, quote=T)
-#filename_r = paste0("data_r/", state_list[i], "/", state_list[i],  "_bill_progress.RData")
-#save(bill_progress, file = filename_r)
-#filename_txt = paste0("data_txt/", state_list[i], "/", state_list[i], "_bill_progress.txt")
-#write.table(bill_progress, file = #filename_txt, 
-#sep="\t", append=F, col.names=T, row.names=F, quote=T)
-#filename_txt = paste0("data_txt/", state_list[i], "/", state_list[i], "_bill_people.txt")
-#write.table(bill_people, file = #filename_txt, 
-#sep="\t", append=F, col.names=T, row.names=F, quote=T)
-#filename_r = paste0("data_r/", state_list[i], "/", state_list[i],"_bill_rc_votes.RData")
-#save(bill_rollcall_vote, file = filename_r)
-#filename_txt = paste0("data_txt/", state_list[i], "/", state_list[i], "_bill_rc_votes.txt")
-#write.table(bill_rollcall_vote, file = #filename_txt, 
-#sep="\t", append=F, col.names=T, row.names=F, quote=T)
