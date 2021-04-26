@@ -45,15 +45,17 @@ parse_people <- function(people_json){
   # End of function call
 }
 
-full_state_list<-c("AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID",
-                   "IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS",
-                   "MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK",
-                   "OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV",
-                   "WI","WY")
+full_state_list<-c("AL","AK","AZ","AR","CA","CO","CT","DE","FL",
+                   "GA","HI","ID","IL","IN","IA","KS","KY","LA",
+                   "ME","MD","MA","MI","MN","MS","MO","MT","NE",
+                   "NV","NH","NJ","NM","NY","NC","ND","OH","OK",
+                   "OR","PA","RI","SC","SD","TN","TX","UT","VT",
+                   "VA","WA","WV","WI","WY"            
+                  )
 
-error_list <- c("OH", "MS", "PA", "WV")
+error_list <- c()
 
-state_list <- c("MS") , "TX", "MS", "NJ") 
+state_list <- c() 
 
 #Bill files
 for(i in 1:length(state_list)){ 
@@ -96,8 +98,8 @@ path_state <- paste0("data_json/", state_list[i], "/AllSessions")
   save(bill_master, file = paste0("data_r/", state_list[i], "/", state_list[i], "_bill_master.RData"))
   }
 
-state_list <- c("DE")
-#Bill text
+
+#Bill text: Unfinished
 for(i in 1:length(state_list)){ 
   #Bill Text
   bill_text_paths <- find_json_path(base_dir = paste0("data_json/", state_list[i], "/AllSessions"),file_type = "text") 
@@ -109,45 +111,3 @@ for(i in 1:length(state_list)){
   save(bill_text_all, file = paste0("data_r/", state_list[i], "/", state_list[i], "_bill_text.RData"))
 }
 
-############### State Specific ############### 
-
-
-
-  path_state <- paste0("data_json/", "MS", "/AllSessions") 
-  #Meta 
-  bill_meta_paths <- find_json_path(base_dir = path_state, file_type = "bill") 
-  bill_meta <- bill_meta_paths %>%
-    map_df(parse_bill)
-  # Progress
-  bill_progress <- bill_meta_paths %>%
-    map_df(parse_bill_progress)
-  #Sponsor 
-  bill_sponsor <- bill_meta_paths %>%
-    map_df(parse_bill_sponsor) 
-  
-  #Bill Votes
-  # Roll-Call
-  bill_vote_paths <- find_json_path(base_dir = path_state, file_type = "vote") 
-  bill_rollcall_vote <- bill_vote_paths %>%
-    map_df(parse_rollcall_vote)
-  # Individual Votes
-  bill_indv_vote <- bill_vote_paths %>%
-    map_df(parse_person_vote)
-  
-  #People files
-  #Bill_People
-  bill_people_paths <- find_json_path(base_dir = path_state, file_type = "people") 
-  bill_people <- bill_people_paths %>%
-    map_df(parse_people)
-  
-  #Saving files
-  dir.create(path = paste0("data_r/", "MS"))
-  save(bill_indv_vote, file = paste0("data_r/", "MS", "/", "MS", "_bill_indv_votes.RData"))
-  save(bill_people, file = paste0("data_r/", "MS", "/", "MS", "_bill_people.RData"))
-  
-  # Combines meta, progress, roll-call votes, and sponsors. 
-  bill_master <- merge(bill_meta, bill_progress, by.x = "bill_id", by.y = "bill_id")
-  bill_master <- merge(bill_master, bill_rollcall_vote, by.x = "bill_id", by.y = "bill_id")
-  bill_master <- merge(bill_master, bill_sponsor, by.x = "bill_id", by.y = "bill_id")
-  save(bill_master, file = paste0("data_r/", "MS", "/", "MS", "_bill_master.RData"))
-}
