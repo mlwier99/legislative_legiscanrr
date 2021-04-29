@@ -1,21 +1,27 @@
 # legislative_legiscanrr
 
-UNDER CONSTRUCTION
 
-Description: 
+**Author:** Michelle Wier
 
-Home OS: Arch 
+**Original Date:** January 2020 to May 2020
 
-Developer: RStudio, Stata, Terminal 
+**Last Updated Code:** April 2021
 
-File Structure: 
-  
-Key Packages:  
-  - fanghuiz/legiscanrr
-  
-Goal: 
-Included files: 
-        
-General notes: 
+**Programs/Languages:** 
+
+## Project
+### Description
+
+## Files
+### File Structure
  
-Project started January 2020
+### Files Uploaded
+
+## Notes 
+**Key Packages** 
+ * fanghuiz/legiscanrr
+ 
+ 
+*Added to GH:* April 25 2021
+
+*Updated on GH:* April 26, 2021
